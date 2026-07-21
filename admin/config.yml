@@ -1,7 +1,8 @@
-# Sveltia CMS 設定(Decap CMS 互換)
-# OAuth 中継サーバーは使わない。各編集者はログイン画面の「Sign In with Token」から
-# 自分の GitHub Personal Access Token (repo への write 権限付き) でログインする。
-# ワンクリックログインにしたくなったら OAuth 中継を立てて base_url を足せば切替可能。
+# Sveltia CMS configuration (Decap CMS compatible)
+# No OAuth relay server is used. On the login screen, each editor chooses
+# "Sign In with Token" and signs in with their own GitHub Personal Access Token
+# (with write access to this repo).
+# If one-click login is ever wanted, deploy an OAuth relay and add base_url here.
 backend:
   name: github
   repo: mdl-lab/mdl-site
@@ -10,26 +11,26 @@ backend:
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
-# ---- 以下のコレクションはプレースホルダ。サイト設計に合わせて自由に変更してください ----
+# ---- The collections below are placeholders. Adjust freely to fit the site design ----
 collections:
   - name: news
-    label: "ニュース・新着情報"
+    label: "News"
     folder: "content/news"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { label: "タイトル", name: "title", widget: "string" }
-      - { label: "日付", name: "date", widget: "datetime" }
-      - { label: "本文", name: "body", widget: "markdown", required: false }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
 
   - name: publications
-    label: "論文リスト"
+    label: "Publications"
     folder: "content/publications"
     create: true
     slug: "{{year}}-{{slug}}"
     fields:
-      - { label: "タイトル", name: "title", widget: "string" }
-      - { label: "著者", name: "authors", widget: "string" }
-      - { label: "発表先(会議・論文誌)", name: "venue", widget: "string" }
-      - { label: "年", name: "year", widget: "number", value_type: "int" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Authors", name: "authors", widget: "string" }
+      - { label: "Venue (conference / journal)", name: "venue", widget: "string" }
+      - { label: "Year", name: "year", widget: "number", value_type: "int" }
       - { label: "URL / DOI", name: "url", widget: "string", required: false }

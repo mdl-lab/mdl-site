@@ -1,6 +1,6 @@
 ---
-title: サイト公開準備を開始しました
+title: Site infrastructure set up
 date: 2026-07-21T00:00:00.000Z
 ---
 
-GitHub Pages + Decap CMS での運用環境を整備しました。(サンプル記事です。削除して構いません)
+Set up GitHub Pages + Sveltia CMS hosting for this site. (Sample post — feel free to delete.)
