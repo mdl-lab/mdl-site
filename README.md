@@ -181,9 +181,14 @@ News is sorted automatically by the front-matter `date`, newest first. The `summ
 
 ## Importing publications from BibTeX
 
-Add standard BibTeX entries to `data/publications/library.bib`:
+One publication = one file under `data/publications/entries/`. Each file is a small
+frontmatter block followed by the raw BibTeX entry:
 
-```bibtex
+```markdown
+---
+id: example2026
+year: 2026
+---
 @inproceedings{example2026,
   title = {Paper Title},
   author = {Sakuma, Jun and Example, Alice},
@@ -193,6 +198,13 @@ Add standard BibTeX entries to `data/publications/library.bib`:
   abbr = {ICML 2026}
 }
 ```
+
+Add entries either via the CMS (`/admin/` → Publications → paste the BibTeX block)
+or by creating the file directly. On push, `.github/workflows/build-bib.yml`
+concatenates all entries into `data/publications/library.bib` (newest year first)
+and commits it. **Never edit `library.bib` by hand — it is auto-generated.**
+When previewing locally right after editing entries, run `python3 tools/build_bib.py`
+to regenerate it without waiting for CI.
 
 The browser parser extracts the title, authors, year, venue, DOI or URL, sorts entries by year, and renders the publication list. The optional `abbr` field supplies the short venue badge; without it, `journal` or `booktitle` is used.
 

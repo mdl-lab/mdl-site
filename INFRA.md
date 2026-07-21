@@ -27,11 +27,12 @@ No OAuth relay server is used. On the `/admin/` login screen, each editor choose
   the Cloudflare Workers based
   [sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth)) and add
   `base_url` to the backend section of `admin/config.yml`
-- `admin/config.yml` mirrors the content model under `data/` (news, people, section
-  indexes). Publications are BibTeX (`data/publications/library.bib`) and are edited
-  directly, not via the CMS. When new frontmatter keys are added to section index
-  files, declare them in `admin/config.yml` as well — file entries rewrite the whole
-  frontmatter on save
+- `admin/config.yml` mirrors the content model under `data/` (news, people,
+  publications, section indexes). Publications are managed as one-BibTeX-entry-per-file
+  under `data/publications/entries/`; `.github/workflows/build-bib.yml` regenerates
+  `data/publications/library.bib` from them on push (never edit library.bib by hand).
+  When new frontmatter keys are added to section index files, declare them in
+  `admin/config.yml` as well — file entries rewrite the whole frontmatter on save
 
 ## Access restriction until launch (important)
 

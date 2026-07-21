@@ -1,0 +1,31 @@
+name: Rebuild publications BibTeX
+
+on:
+  push:
+    branches: ["main", "dev"]
+    paths: ["data/publications/entries/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Rebuild library.bib from entries
+        run: python3 tools/build_bib.py
+
+      - name: Commit if changed
+        run: |
+          if ! git diff --quiet data/publications/library.bib; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/publications/library.bib
+            git commit -m "Rebuild library.bib from publication entries"
+            git push
+          else
+            echo "library.bib already up to date"
+          fi

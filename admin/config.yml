@@ -77,6 +77,23 @@ collections:
       - { label: "Detail (alumni)", name: "detail", widget: "string", required: false }
       - { label: "Notes", name: "body", widget: "markdown", required: false }
 
+  # One publication = one file whose body is a raw BibTeX entry (paste from
+  # Google Scholar etc.). On push, .github/workflows/build-bib.yml concatenates
+  # all entries into data/publications/library.bib, which the site renders.
+  # Never edit library.bib directly.
+  - name: publications
+    label: "Publications"
+    folder: "data/publications/entries"
+    create: true
+    extension: md
+    identifier_field: id
+    summary: "{{year}} {{id}}"
+    sortable_fields: [year, id]
+    fields:
+      - { label: "Cite key (e.g. sakuma2026title — also the file name)", name: "id", widget: "string" }
+      - { label: "Year", name: "year", widget: "number", value_type: "int" }
+      - { label: "BibTeX entry (paste the full @... block)", name: "body", widget: "text" }
+
   # File entries rewrite the whole frontmatter on save: every key used by the
   # site must be declared here. If the design adds new keys, add them below too.
   - name: sections
