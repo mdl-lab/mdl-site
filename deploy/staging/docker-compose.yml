@@ -1,0 +1,14 @@
+# tamagotake 用: Basic 認証付きステージング
+# リポジトリの checkout をそのまま nginx で配信する。使い方は同ディレクトリの README.md 参照。
+services:
+  mdl-staging:
+    image: nginx:alpine
+    container_name: mdl-staging
+    restart: unless-stopped
+    # ホストの 127.0.0.1:8095 だけに公開。外部公開はホスト nginx のリバースプロキシ経由。
+    ports:
+      - "127.0.0.1:8095:80"
+    volumes:
+      - ../..:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./htpasswd:/etc/nginx/htpasswd:ro
