@@ -1,12 +1,11 @@
-# Decap CMS 設定
-# 認証は kpro と共用の OAuth 中継(tamagotake 上の kpro-oauth コンテナ)を利用。
-# 中継の実体: https://kpro.mdl.comp.isct.ac.jp/oauth/ → 127.0.0.1:8091 (/opt/kpro-oauth/server.js)
+# Sveltia CMS 設定(Decap CMS 互換)
+# OAuth 中継サーバーは使わない。各編集者はログイン画面の「Sign In with Token」から
+# 自分の GitHub Personal Access Token (repo への write 権限付き) でログインする。
+# ワンクリックログインにしたくなったら OAuth 中継を立てて base_url を足せば切替可能。
 backend:
   name: github
   repo: mdl-lab/mdl-site
   branch: main
-  base_url: https://kpro.mdl.comp.isct.ac.jp
-  auth_endpoint: oauth/auth
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"

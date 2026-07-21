@@ -6,27 +6,30 @@ MDL 研究室紹介サイト(https://mdl.comp.isct.ac.jp)のリポジトリ。
 
 - **ホスティング**: GitHub Pages(このリポジトリの `main` ブランチのルートをそのまま配信。ビルドなし)
 - **ドメイン**: `mdl.comp.isct.ac.jp`(`CNAME` ファイル + リポジトリの Pages 設定で指定)
-- **CMS**: [Decap CMS](https://decapcms.org/)(`/admin/` からブラウザで編集 → このリポジトリに直接コミットされる)
+- **CMS**: [Sveltia CMS](https://github.com/sveltia/sveltia-cms)(Decap CMS 互換。`/admin/` からブラウザで編集 → このリポジトリに直接コミットされる)
 
 ```
 index.html              … トップページ(現状プレースホルダ。自由に差し替え可)
 CNAME                   … カスタムドメイン指定(GitHub Pages 用。消さないこと)
 .nojekyll               … Jekyll ビルドの無効化(素の HTML 配信)
-admin/index.html        … Decap CMS 本体の読み込み
-admin/config.yml        … Decap の設定(コレクション定義はプレースホルダ)
-content/news/           … ニュース記事(Markdown, Decap が管理)
-content/publications/   … 論文エントリ(Markdown, Decap が管理)
-assets/uploads/         … Decap からアップロードした画像等
+admin/index.html        … Sveltia CMS 本体の読み込み
+admin/config.yml        … CMS の設定(Decap 互換形式。コレクション定義はプレースホルダ)
+content/news/           … ニュース記事(Markdown, CMS が管理)
+content/publications/   … 論文エントリ(Markdown, CMS が管理)
+assets/uploads/         … CMS からアップロードした画像等
 ```
 
-## Decap CMS の認証
+## CMS の認証(OAuth 中継なし構成)
 
-GitHub Pages にはサーバーがないため、OAuth 中継として **kpro と共用の中継サーバー**
-(tamagotake 上の `kpro-oauth` コンテナ、`https://kpro.mdl.comp.isct.ac.jp/oauth/`)を使っている。
+OAuth 中継サーバーは**使っていない**。各編集者は `/admin/` のログイン画面で
+**「Sign In with Token」**を選び、自分の GitHub Personal Access Token でログインする。
 
-- GitHub OAuth App: Client ID `Ov23liE9vbWrMRx9WvwV`(callback は kpro 側のまま。中継方式なので複数サイトで共用可)
-- 実体: tamagotake の `/opt/kpro-oauth/`(`server.js`, `.env`)。運用手順は kpro-site リポジトリの README 参照
-- `/admin/` にログインできるのは、**このリポジトリに write 権限を持つ GitHub アカウント**のみ
+- 編集できるのは、**このリポジトリに write 権限を持つ GitHub アカウント**のみ
+- PAT はログイン画面のリンクから必要スコープ選択済みで発行できる(fine-grained token、
+  対象リポジトリを mdl-lab/mdl-site に絞るのを推奨)。有効期限(既定90日)が切れたら再発行
+- 将来ワンクリックの GitHub ログインにしたい場合は、OAuth 中継(自前コンテナ or
+  Cloudflare Workers の [sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth))を立てて
+  `admin/config.yml` の backend に `base_url` を追加すれば切り替えられる
 
 ## コンテンツの扱い(引き継ぎメモ)
 
