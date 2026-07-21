@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" role="img" aria-labelledby="title desc">
+  <title id="title">Dependable AI</title>
+  <desc id="desc">Concentric verification rings surrounding a checked AI core.</desc>
+  <defs>
+    <radialGradient id="bg" cx="53%" cy="42%" r="80%">
+      <stop offset="0" stop-color="#318884"/>
+      <stop offset="1" stop-color="#062e35"/>
+    </radialGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="800" height="440" fill="url(#bg)"/>
+  <g transform="translate(400 220)" fill="none" stroke="#b9f0e7">
+    <circle r="164" stroke-opacity=".28" stroke-width="2"/>
+    <circle r="126" stroke-opacity=".42" stroke-width="2" stroke-dasharray="8 10"/>
+    <circle r="88" stroke-opacity=".62" stroke-width="2"/>
+    <circle r="52" fill="#e8fff9" fill-opacity=".95" stroke="#c9fff3" stroke-width="3" filter="url(#glow)"/>
+  </g>
+  <g fill="#d7fff4">
+    <circle cx="251" cy="153" r="7"/><circle cx="512" cy="130" r="6"/><circle cx="551" cy="297" r="7"/><circle cx="292" cy="333" r="5"/>
+  </g>
+  <path d="m373 220 19 20 39-47" fill="none" stroke="#146966" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#bce7df" font-family="Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="3">
+    <text x="92" y="92">EXPLAIN</text><text x="594" y="92">VERIFY</text><text x="90" y="374">FAIRNESS</text><text x="595" y="374">ROBUST</text>
+  </g>
+</svg>

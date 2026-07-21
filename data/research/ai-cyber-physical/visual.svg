@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" role="img" aria-labelledby="title desc">
+  <title id="title">AI and Cyber-Physical Systems</title>
+  <desc id="desc">A robotic arm reaches toward a monitored real-world target.</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="48%" r="82%">
+      <stop offset="0" stop-color="#f1bb70"/>
+      <stop offset="1" stop-color="#684021"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#fff4d9" stroke-opacity=".17"/>
+    </pattern>
+    <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#e6efe9"/><stop offset=".5" stop-color="#79a69c"/><stop offset="1" stop-color="#274e4b"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="440" fill="url(#bg)"/>
+  <path d="M0 290h800v150H0z" fill="url(#grid)" transform="skewY(-5)" opacity=".8"/>
+  <g transform="translate(125 275) rotate(-27)">
+    <circle cx="0" cy="0" r="58" fill="#173f42" stroke="#a9d4c8" stroke-width="16"/>
+    <rect x="20" y="-30" width="245" height="60" rx="28" fill="url(#metal)" stroke="#d5eee7" stroke-width="4"/>
+    <circle cx="250" cy="0" r="35" fill="#244c4a" stroke="#9bcac0" stroke-width="12"/>
+    <rect x="266" y="-22" width="95" height="44" rx="16" fill="url(#metal)"/>
+    <path d="M356-24l45-32M356 24l45 32" stroke="#d8eee7" stroke-width="13" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(641 283)" fill="none" stroke="#c9fff1">
+    <circle r="55" stroke-width="2"/><circle r="86" stroke-opacity=".32"/><circle r="118" stroke-opacity=".18"/>
+    <path d="M-75 0H75M0-75V75" stroke-width="2"/>
+  </g>
+  <circle cx="641" cy="283" r="9" fill="#48d9cc"/>
+  <g fill="#fff1cf" font-family="Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="3">
+    <text x="566" y="85">SENSE</text><text x="650" y="128">ACT</text><text x="572" y="396">VERIFY</text>
+  </g>
+</svg>

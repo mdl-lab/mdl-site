@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 900" role="img" aria-labelledby="title desc">
+  <title id="title">小野 薫 photo placeholder</title>
+  <desc id="desc">Replace this file with an official portrait.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e3edef"/>
+      <stop offset="1" stop-color="#78aaa9"/>
+    </linearGradient>
+    <linearGradient id="figure" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".94"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity=".42"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="900" fill="url(#background)"/>
+  <circle cx="360" cy="300" r="142" fill="url(#figure)"/>
+  <path d="M116 900c13-236 107-356 244-356s231 120 244 356z" fill="url(#figure)"/>
+  <circle cx="644" cy="78" r="10" fill="#22b8b7"/>
+  <text x="360" y="325" text-anchor="middle" font-family="Arial, sans-serif" font-size="70" font-weight="600" letter-spacing="8" fill="#173f43">小薫</text>
+  <text x="360" y="842" text-anchor="middle" font-family="Arial, sans-serif" font-size="21" font-weight="600" letter-spacing="6" fill="#173f43" opacity=".7">PHOTO PLACEHOLDER</text>
+</svg>

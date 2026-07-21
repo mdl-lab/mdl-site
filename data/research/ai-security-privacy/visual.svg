@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" role="img" aria-labelledby="title desc">
+  <title id="title">AI Security and Privacy</title>
+  <desc id="desc">A network of AI modalities protected by a central security shield.</desc>
+  <defs>
+    <radialGradient id="bg" cx="65%" cy="45%" r="80%">
+      <stop offset="0" stop-color="#2859a0"/>
+      <stop offset="1" stop-color="#06162f"/>
+    </radialGradient>
+    <linearGradient id="shield" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#79e3ef"/>
+      <stop offset="1" stop-color="#2c76d0"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="440" fill="url(#bg)"/>
+  <g fill="none" stroke="#61cfe7" stroke-opacity=".48" stroke-width="2">
+    <path d="M130 122 320 220 650 108M130 122l80 220 110-122M650 108 610 330 320 220M210 342l400-12"/>
+    <circle cx="130" cy="122" r="45"/>
+    <circle cx="650" cy="108" r="36"/>
+    <circle cx="210" cy="342" r="31"/>
+    <circle cx="610" cy="330" r="42"/>
+  </g>
+  <g fill="#a4eef4" font-family="Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="3">
+    <text x="92" y="128">TEXT</text>
+    <text x="613" y="114">VISION</text>
+    <text x="168" y="348">AUDIO</text>
+    <text x="575" y="336">ACTION</text>
+  </g>
+  <path d="M400 102c63 34 112 33 112 33v91c0 73-46 121-112 151-66-30-112-78-112-151v-91s49 1 112-33z" fill="url(#shield)" fill-opacity=".88" stroke="#b6f4f5" stroke-width="3"/>
+  <rect x="361" y="214" width="78" height="67" rx="12" fill="#071d3d"/>
+  <path d="M376 214v-24c0-35 48-35 48 0v24" fill="none" stroke="#d7fbfb" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="400" cy="245" r="8" fill="#62d9dc"/>
+  <path d="M400 252v14" stroke="#62d9dc" stroke-width="7" stroke-linecap="round"/>
+</svg>

@@ -1,3 +1,5 @@
-.claude/
-.DS_Store
-deploy/staging/htpasswd
+/demo-*.png
+/github-pages-*.png
+/mdl-lab-*.png
+/sakuma-lab-*.png
+/Lab

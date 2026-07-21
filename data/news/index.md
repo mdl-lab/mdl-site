@@ -1,0 +1,21 @@
+---
+eyebrow: "Latest News"
+title: "Lab News"
+description: "Recent news and paper acceptances from MDL Lab, listed in reverse chronological order."
+button_label: "View all news"
+read_label: "Read article"
+archive_title: "Lab News"
+archive_description: "News, visits, paper acceptances, and research updates from the Machine Learning and Dependable AI Lab."
+archive_eyebrow: "Latest News Archive"
+back_label: "Back to Lab News"
+all_label: "All Lab News"
+not_found_title: "Article not found"
+not_found_description: "The requested news article does not exist or is no longer available."
+not_found_button: "Return to Lab News"
+items:
+  - "visitor-demo-2026/index.md"
+  - "papers-2025/index.md"
+  - "papers-2023/index.md"
+  - "paper-2019/index.md"
+  - "paper-2018/index.md"
+---
