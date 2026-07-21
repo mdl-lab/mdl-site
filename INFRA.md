@@ -51,8 +51,10 @@ relies on:
 
 1. On `dev`: replace `robots.txt` with a crawler-allowing version
    (`User-agent: *` + empty `Disallow:`)
-2. Merge `dev` into `main` and push — the Actions workflow deploys it
-3. Rollback: `git revert` the merge commit on `main`
+2. On `dev`: in `admin/config.yml`, change `backend.branch` from `dev` to `main`
+   (so CMS edits target the live branch after launch)
+3. Merge `dev` into `main` and push — the Actions workflow deploys it
+4. Rollback: `git revert` the merge commit on `main`
 
 ## DNS
 

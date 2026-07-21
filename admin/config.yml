@@ -18,7 +18,8 @@
 backend:
   name: github
   repo: mdl-lab/mdl-site
-  branch: main
+  # Pre-launch: CMS edits go to dev. Switch this to `main` when dev is merged (launch).
+  branch: dev
 
 media_folder: "assets"
 public_folder: "/assets"
