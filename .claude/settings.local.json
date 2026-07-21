@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/funami/Documents/research/mdl-site status)"
+    ]
+  }
+}
