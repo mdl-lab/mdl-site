@@ -3,3 +3,8 @@
 /mdl-lab-*.png
 /sakuma-lab-*.png
 /Lab
+
+# local
+.claude/
+.DS_Store
+deploy/staging/htpasswd

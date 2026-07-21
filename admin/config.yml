@@ -1,36 +1,129 @@
 # Sveltia CMS configuration (Decap CMS compatible)
-# No OAuth relay server is used. On the login screen, each editor chooses
-# "Sign In with Token" and signs in with their own GitHub Personal Access Token
-# (with write access to this repo).
-# If one-click login is ever wanted, deploy an OAuth relay and add base_url here.
+#
+# Authentication: no OAuth relay server. On the login screen choose
+# "Sign In with Token" and use a GitHub Personal Access Token with write
+# access to this repo. To switch to one-click OAuth login later, deploy a
+# relay and add `base_url` under `backend`.
+#
+# Content model: matches the site's data/ structure (see README.md).
+# - News articles and people profiles are folder-per-entry collections.
+# - Section index files (data/news/index.md, data/people/index.md) are file
+#   entries below. IMPORTANT: when creating a news article or person via the
+#   CMS, also add its "<id>/index.md" path to the corresponding section index
+#   (items/current lists) or it will not appear on the site.
+# - Publications live in data/publications/library.bib (BibTeX); edit that
+#   file directly — BibTeX cannot be managed by the CMS.
+# - Other sections (research, projects, site copy, application) can be added
+#   as collections later following the same pattern.
 backend:
   name: github
   repo: mdl-lab/mdl-site
   branch: main
 
-media_folder: "assets/uploads"
-public_folder: "/assets/uploads"
+media_folder: "assets"
+public_folder: "/assets"
 
-# ---- The collections below are placeholders. Adjust freely to fit the site design ----
 collections:
   - name: news
     label: "News"
-    folder: "content/news"
+    folder: "data/news"
+    path: "{{fields.id}}/index"
+    media_folder: ""
+    public_folder: ""
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    identifier_field: id
+    summary: "{{date}} {{title}}"
+    sortable_fields: [date, title]
     fields:
+      - { label: "ID (folder name, e.g. papers-2026)", name: "id", widget: "string" }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", time_format: false }
+      - { label: "Year", name: "year", widget: "number", value_type: "int" }
+      - { label: "Category (e.g. PUBLICATIONS, VISITOR)", name: "category", widget: "string" }
+      - { label: "Summary", name: "summary", widget: "text" }
       - { label: "Body", name: "body", widget: "markdown", required: false }
 
-  - name: publications
-    label: "Publications"
-    folder: "content/publications"
+  - name: people
+    label: "People"
+    folder: "data/people"
+    path: "{{fields.id}}/index"
+    media_folder: ""
+    public_folder: ""
     create: true
-    slug: "{{year}}-{{slug}}"
+    identifier_field: id
+    summary: "{{name}}"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Authors", name: "authors", widget: "string" }
-      - { label: "Venue (conference / journal)", name: "venue", widget: "string" }
-      - { label: "Year", name: "year", widget: "number", value_type: "int" }
-      - { label: "URL / DOI", name: "url", widget: "string", required: false }
+      - { label: "ID (folder name, e.g. jun-sakuma)", name: "id", widget: "string" }
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Initials", name: "initials", widget: "string" }
+      - { label: "Photo (keep inside this person's folder)", name: "photo", widget: "image", required: false }
+      - { label: "Photo alt text", name: "photo_alt", widget: "string", required: false }
+      - { label: "Role", name: "role", widget: "string", required: false }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        required: false
+        options: ["faculty", "researcher", "student", "affiliate", "staff"]
+      - { label: "Profile URL", name: "url", widget: "string", required: false }
+      - label: "Program (students)"
+        name: "program"
+        widget: "select"
+        required: false
+        options: ["bachelors", "masters", "doctoral"]
+      - { label: "Enrollment date (students, YYYY-MM-DD)", name: "enrollment_date", widget: "string", required: false }
+      - { label: "Affiliation", name: "affiliation", widget: "string", required: false }
+      - { label: "Period (alumni)", name: "period", widget: "string", required: false }
+      - { label: "Detail (alumni)", name: "detail", widget: "string", required: false }
+      - { label: "Notes", name: "body", widget: "markdown", required: false }
+
+  # File entries rewrite the whole frontmatter on save: every key used by the
+  # site must be declared here. If the design adds new keys, add them below too.
+  - name: sections
+    label: "Section settings"
+    files:
+      - name: news_index
+        label: "News section (heading, labels, article list)"
+        file: "data/news/index.md"
+        fields:
+          - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Button label", name: "button_label", widget: "string" }
+          - { label: "Read label", name: "read_label", widget: "string" }
+          - { label: "Archive eyebrow", name: "archive_eyebrow", widget: "string" }
+          - { label: "Archive title", name: "archive_title", widget: "string" }
+          - { label: "Archive description", name: "archive_description", widget: "text" }
+          - { label: "Back label", name: "back_label", widget: "string" }
+          - { label: "All label", name: "all_label", widget: "string" }
+          - { label: "Not-found title", name: "not_found_title", widget: "string" }
+          - { label: "Not-found description", name: "not_found_description", widget: "text" }
+          - { label: "Not-found button", name: "not_found_button", widget: "string" }
+          - label: "Articles (paths like papers-2026/index.md)"
+            name: "items"
+            widget: "list"
+            field: { label: "Path", name: "path", widget: "string" }
+      - name: people_index
+        label: "People section (heading, filters, member lists)"
+        file: "data/people/index.md"
+        fields:
+          - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Expand label", name: "expand_label", widget: "string" }
+          - { label: "Collapse label", name: "collapse_label", widget: "string" }
+          - { label: "Alumni eyebrow", name: "alumni_eyebrow", widget: "string" }
+          - { label: "Alumni title", name: "alumni_title", widget: "string" }
+          - { label: "Alumni button", name: "alumni_button", widget: "string" }
+          - { label: "Alumni close button", name: "alumni_close_button", widget: "string" }
+          - label: "Filters (value|Label)"
+            name: "filters"
+            widget: "list"
+            field: { label: "Filter", name: "filter", widget: "string" }
+          - label: "Current members (paths like jun-sakuma/index.md)"
+            name: "current"
+            widget: "list"
+            field: { label: "Path", name: "path", widget: "string" }
+          - label: "Alumni (paths like former-member/index.md)"
+            name: "alumni"
+            widget: "list"
+            field: { label: "Path", name: "path", widget: "string" }
